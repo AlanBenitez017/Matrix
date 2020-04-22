@@ -6,12 +6,14 @@ Dr. Amitabh Mishra
 #include "iostream" 
 #include "matrix.h"
 
+//Default Constructor
 Matrix::Matrix(){
    numRows = 0;
    numCols = 0;
    matrix = NULL;
 }
 
+//Destructor
 Matrix::~Matrix(){
    for(int i = 0; i < numRows; i++){
       delete []matrix[i];
@@ -19,6 +21,7 @@ Matrix::~Matrix(){
    delete []matrix;
 }
 
+//Overloaded constructor
 Matrix::Matrix(int numRows, int numCols){
    this->numRows = numRows;
    this->numCols = numCols;
@@ -28,6 +31,7 @@ Matrix::Matrix(int numRows, int numCols){
    }
 }
 
+//Copy Constructor
 Matrix::Matrix(const Matrix& mat2){
    this->numRows = mat2.numRows;
    this->numCols = mat2.numCols;
@@ -85,10 +89,10 @@ Matrix Matrix::multiply(const Matrix& mat2){
       Matrix result(numRows, mat2.numCols);
       for(int i = 0; i < numRows; i++){
          for(int j = 0; j < numCols; j++){
-            result.matrix[i][j] = 0;
-            for(int k = 0; k < this-> numCols; k++){
+            result.matrix[i][j] += matrix[i][j] * mat2.matrix[i][j];
+            /*for(int k = 0; k < this-> numCols; k++){
                result.matrix[i][j] += matrix[i][k] * mat2.matrix[k][j];
-            }
+            }*/
          }
       }
    return result;
@@ -108,7 +112,7 @@ Matrix Matrix::transpose(){
    Matrix result(numRows, numCols);
    for(int i = 0; i < numRows; i++){
       for(int j = 0; j < numCols; j++){
-         result.matrix[i][j] = matrix[j][i];
+         result.matrix[j][i];
       }
    }
    return result;
@@ -132,10 +136,12 @@ void Matrix::setNumRows(int numRows){
    this->matrix = newMatrix;
 }
 
+//Getting the columns
 int Matrix::getNumCols(){
    return this->numCols;
 }
 
+//Setting the columns
 void Matrix::setNumCols(int numCols){
    for(int i = 0; i < numRows; i++){
       delete matrix[i];
@@ -144,10 +150,12 @@ void Matrix::setNumCols(int numCols){
    this->numCols = numCols;
 }
 
+//Getting the matrix
 int** Matrix::getMatrix(){
    return this->matrix;
 }
 
+//Setting the matrix
 void Matrix::setMatrix(int numRows, int numCols, int** matrix){
    for(int i = 0; i < numRows; i++){
       for(int j = 0; j < numCols; j++){
