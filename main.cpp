@@ -124,14 +124,14 @@ int main(){
    //Multiplying matrix 2 times matrix 3
    cout << "Matrix 7: " << endl;
    Matrix mat7 = mat2.multiply(mat3);
-   cout << "mat7 = mat1 * mat3" << endl;
+   cout << "mat7 = mat2 * mat3" << endl;
    print(mat7);
    cout << endl;
    
-   //Multyplying matrix 1 times matrix 2
+   //Multyplying matrix 7 times matrix 1
    cout << "Matrix 8: " << endl;
-   Matrix mat8 = mat1.multiply(mat2);
-   cout << "mat8 = mat1 * mat2" << endl;
+   Matrix mat8 = mat7.multiply(mat1);
+   cout << "mat8 = mat7 * mat1" << endl;
    print(mat8);
    cout << endl;
    

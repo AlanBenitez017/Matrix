@@ -44,6 +44,7 @@ Matrix::Matrix(const Matrix& mat2){
    }
 } 
 
+//Addition of matrixes
 Matrix Matrix::add(const Matrix& mat2){
    Matrix result(numRows, numCols);
    if((this->numRows == mat2.numRows) && (this->numCols == mat2.numCols)){
@@ -64,6 +65,7 @@ Matrix Matrix::add(const Matrix& mat2){
    return result;
 }
 
+//Substraction of matrixes
 Matrix Matrix::substract(const Matrix& mat2){
    Matrix result(numRows, numCols);
    if((this->numRows == mat2.numRows) && (this->numCols == mat2.numCols)){
@@ -84,28 +86,25 @@ Matrix Matrix::substract(const Matrix& mat2){
    return result;
 }
 
+//Multiplication of matrixes
 Matrix Matrix::multiply(const Matrix& mat2){
-   if(this->numCols == mat2.numCols){
-      Matrix result(numRows, mat2.numCols);
+   Matrix result(numRows, numCols);
+   if((this->numRows == mat2.numRows) && (this->numCols == mat2.numCols)){
       for(int i = 0; i < numRows; i++){
          for(int j = 0; j < numCols; j++){
-            result.matrix[i][j] += matrix[i][j] * mat2.matrix[i][j];
-            /*for(int k = 0; k < this-> numCols; k++){
-               result.matrix[i][j] += matrix[i][k] * mat2.matrix[k][j];
-            }*/
+            result.matrix[i][j] = matrix[i][j] * mat2.matrix[i][j];
          }
       }
-   return result;
+   
    }
    else{
-      Matrix result(numRows, mat2.numCols);
       for(int i = 0; i < numRows; i++){
          for(int j = 0; j < numCols; j++){
             result.matrix[i][j] = 0;
          }
       }
-   return result;
    }
+   return result;
 }
 
 Matrix Matrix::transpose(){
